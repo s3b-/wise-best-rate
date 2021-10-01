@@ -1,0 +1,33 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Wise Best Rate</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+<body>
+	<div id="header">
+		<p>Wise Best Rate</p>
+	</div>
+	<div class="outerbox">
+		<div class="box">
+			<p>Wise config</p>
+			Profile:<br>
+			<input type="text" name="inputWiseProfile" value="{{ configWiseProfile }}"><br>
+			API Key:<br>
+			<input type="text" name="inputWiseApiKey" value="******"><br>
+		</div>
+		<div class="box">
+			<p>Currency config</p>
+			Source:<br>
+			<input type="text" name="inputCurrencySource" value="{{ configCurrencySource }}"><br>
+			Target:<br>
+			<input type="text" name="inputCurrencyTarget" value="{{ configCurrencyTarget }}"><br>
+			Amount:<br>
+			<input type="text" name="inputCurrencyAmount" value="{{ configCurrencyAmount }}"><br>
+		</div>
+		<div class="box">
+			<p>Control</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+[wise]
+profile = 
+apiKey = 
+targetAccount = 
+
+[currency]
+source = CHF
+target = EUR
+amount = 1000
+
+[api]
+liveUrl = https://api.transferwise.com
