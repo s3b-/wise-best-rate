@@ -1,0 +1,26 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.outerbox {
+	display: flex;  
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.box {
+	display: flex;
+	border-style: solid;
+	border-width: 1px;
+	width: 25%;
+	height: 200px;
+	margin: auto;
+	flex-direction: column;
+}
+
+#header {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	font-size: x-large;
+}
