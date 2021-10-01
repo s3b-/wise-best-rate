@@ -17,8 +17,8 @@ def createQuote():
 	data['targetAmount'] = None
 	data['profile'] = config.get('wise', 'profile')
 	response = requests.post(apiUrl + '/v2/quotes', data=json.dumps(data), headers=headers)
-	answer = response.json()
-	return answer['id']
+	answer = ([response.json()['id'], response.json()['rate']])
+	return answer
 
 def createTransfer(quoteUuid):
 	data = {}
@@ -26,8 +26,19 @@ def createTransfer(quoteUuid):
 	data['quoteUuid'] = quoteUuid
 	data['customerTransactionId'] = str(uuid.uuid4())
 	response = requests.post(apiUrl + '/v1/transfers', data=json.dumps(data), headers=headers)
-	print(response.json())
+	f = open('lastRate.txt', 'w')
+	f.write(str(response.json()['id']) + "," + str(response.json()['rate']))
+	f.close()
 
-createTransfer(createQuote())
+def cancelTransfer(id):
+	response = requests.put(apiUrl + '/v1/transfers/' + id + '/cancel', headers=headers)
 
+createNewQuote = createQuote()
+f = open('lastRate.txt', "r")
+lastRate = f.read().split(',')
+f.close()
 
+if createNewQuote[1] > float(lastRate[1]):
+	createTransfer(createNewQuote[0])
+	cancelTransfer(lastRate[0])
+	
