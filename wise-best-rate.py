@@ -1,5 +1,6 @@
 #!/usr/local/bin/python3
 from flask import Flask, render_template, request
+from crontab import CronTab
 import logging, os, configparser
 
 def modifyConfig():
@@ -34,7 +35,9 @@ def index():
 		configEmailSmtpSender = config.get('email', 'SmtpSender'),
 		configEmailRecipient = config.get('email', 'MailRecipient'),
 		configEmailPrefix = config.get('email', 'MailPrefix'),
-		configEmailEncryptionMode = config.get('email', 'EncryptionMode')
+		configEmailEncryptionMode = config.get('email', 'EncryptionMode'),
+		configCronFrequency = config.get('cron', 'frequency'),
+		configCronUser = config.get('cron', 'user')
 		)
 
 def modifyConfig():
@@ -58,4 +61,22 @@ def modifyConfig():
 			config.write(configfile)
 
 	if request.form.get('inputCurrencySubmit'):
-		print('Currency config')
+		config['currency']['source'] = request.form.get('inputCurrencySource')
+		config['currency']['target'] = request.form.get('inputCurrencyTarget')
+		config['currency']['amount'] = request.form.get('inputCurrencyAmount')
+		with open(path + '/config.ini', 'w') as configfile:
+			config.write(configfile)
+
+	if request.form.get('inputCronSubmit'):
+		config['cron']['frequency'] = request.form.get('inputCronFrequency')
+		config['cron']['user'] = request.form.get('inputCronUser')
+		with open(path + '/config.ini', 'w') as configfile:
+			config.write(configfile)
+		modifyCron(request.form.get('inputCronFrequency'))
+
+def modifyCron(frequency):
+	cron = CronTab(user='andy')
+	cron.remove_all(comment='wise')
+	job = cron.new(command='python3 ' + path + '/apihandler.py > /dev/null', comment='wise')
+	job.minute.every(frequency)
+	cron.write()

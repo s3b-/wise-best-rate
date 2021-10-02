@@ -58,6 +58,13 @@
 		</div>
 		<div class="box">
 			<p>Control</p>
+			<form method="POST" action="">
+				Cronjob frequency (minutes):<br>
+				<input type="text" name="inputCronFrequency" value="{{ configCronFrequency }}"><br>
+				Cronjob user:<br>
+				<input type="text" name="inputCronUser" value="{{ configCronUser }}"><br>
+				<input type="submit" name="inputCronSubmit" value="Update">
+			</form>
 		</div>
 	</div>
 </body>
