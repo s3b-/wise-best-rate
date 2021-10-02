@@ -1,5 +1,5 @@
 #!/usr/local/bin/python3
-import requests, os, configparser, json, uuid
+import requests, os, configparser, json, uuid, sendMail
 from pathlib import Path
 
 path = os.path.dirname(os.path.abspath(__file__)) # path to this .py file
@@ -31,6 +31,7 @@ def createTransfer(quoteUuid):
 	f = open(lastRatePath, 'w')
 	f.write(str(response.json()['id']) + "," + str(response.json()['rate']))
 	f.close()
+	sendMail.sendNotification('Transfer created', str(response.json()['rate']) + ' / ' + str(response.json()['targetValue']) + ' ' + str(response.json()['targetCurrency']))
 
 def cancelTransfer(id):
 	response = requests.put(apiUrl + '/v1/transfers/' + id + '/cancel', headers=headers)
