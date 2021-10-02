@@ -36,15 +36,30 @@ def createTransfer(quoteUuid):
 def cancelTransfer(id):
 	response = requests.put(apiUrl + '/v1/transfers/' + id + '/cancel', headers=headers)
 
+def verifyLastTransfer(id):
+	response = requests.get(apiUrl + '/v1/transfers/' + id, headers=headers)
+	if response.status_code == 200:
+		if response.json()['status'] == 'incoming_payment_waiting':
+			return True
+		else:
+			return False
+	else:
+		return False
+
 createNewQuote = createQuote()
 
 if Path(lastRatePath).is_file():
 	f = open(lastRatePath, "r")
 	lastRate = f.read().split(',')
 	f.close()
+	verified = verifyLastTransfer(lastRate[0])
 	
-	if createNewQuote[1] > float(lastRate[1]):
+	if createNewQuote[1] > float(lastRate[1]) and verified:
 		createTransfer(createNewQuote[0])
 		cancelTransfer(lastRate[0])
+
+	if not verified:
+		createTransfer(createNewQuote[0])
+
 else:
 	createTransfer(createNewQuote[0])
