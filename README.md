@@ -11,6 +11,7 @@ This project is in a very early phase, it will continuously grow during Hacktobe
 # Installation
 **If you run this application on a public server, protect it with e.g. BasicAuth!**
 - Infall Flask: `pip3 install flask`
+- Install python-crontab: `pip3 install python-crontab`
 - Configure Flask:
   - `export FLASK_APP=wise-best-rate`
   - `export FLASK_ENV=development`
