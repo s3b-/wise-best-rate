@@ -10,20 +10,51 @@
 	</div>
 	<div class="outerbox">
 		<div class="box">
+			<form method="POST" action="">
 			<p>Wise config</p>
-			Profile:<br>
-			<input type="text" name="inputWiseProfile" value="{{ configWiseProfile }}"><br>
-			API Key:<br>
-			<input type="text" name="inputWiseApiKey" value="******"><br>
+				Profile:<br>
+				<input type="text" name="inputWiseProfile" value="{{ configWiseProfile }}"><br>
+				API Key:<br>
+				<input type="password" name="inputWiseApiKey" value="{{ configWiseApiKey }}"><br>
+				Target Account:<br>
+				<input type="text" name="inputWiseTargetAccount" value="{{ configWiseTargetAccount }}"><br>
+				<input type="submit" name="inputWiseSubmit" value="Update">
+			</form>
 		</div>
 		<div class="box">
+			<form method="POST" action="">
 			<p>Currency config</p>
-			Source:<br>
-			<input type="text" name="inputCurrencySource" value="{{ configCurrencySource }}"><br>
-			Target:<br>
-			<input type="text" name="inputCurrencyTarget" value="{{ configCurrencyTarget }}"><br>
-			Amount:<br>
-			<input type="text" name="inputCurrencyAmount" value="{{ configCurrencyAmount }}"><br>
+				Source:<br>
+				<input type="text" name="inputCurrencySource" value="{{ configCurrencySource }}"><br>
+				Target:<br>
+				<input type="text" name="inputCurrencyTarget" value="{{ configCurrencyTarget }}"><br>
+				Amount:<br>
+				<input type="text" name="inputCurrencyAmount" value="{{ configCurrencyAmount }}"><br>
+				<input type="submit" name="inputCurrencySubmit" value="Update">
+			</form>
+		</div>
+		<div class="box">
+			<form method="POST" action="">
+			<p>E-Mail config</p>
+				SMTP Server:<br>
+				<input type="text" name="inputEmailSmtpServer" value="{{ configEmailSmtpServer }}"><br>
+				SMTP Port:<br>
+				<input type="text" name="inputEmailSmtpPort" value="{{ configEmailSmtpPort }}"><br>
+				User:<br>
+				<input type="text" name="inputEmailSmtpUser" value="{{ configEmailSmtpUser }}"><br>
+				Password:<br>
+				<input type="password" name="inputEmailSmtpPassword" value="{{ configEmailSmtpPassword }}"><br>
+				Sender:<br>
+				<input type="text" name="inputEmailSmtpSender" value="{{ configEmailSmtpSender }}"><br>
+				Recipient:<br>
+				<input type="text" name="inputEmailRecipient" value="{{ configEmailRecipient }}"><br>
+				Subject prefix:<br>
+				<input type="text" name="inputEmailPrefix" value="{{ configEmailPrefix }}"><br>
+				Encryption mode:<br>
+				<input type="text" name="inputEmailEncryptionMode" value="{{ configEmailEncryptionMode }}"><br>
+				0 = No encryption, 1 = SSL, 2 = StartTLS<br>
+				<input type="submit" name="inputEmailSubmit" value="Update">
+			</form>
 		</div>
 		<div class="box">
 			<p>Control</p>
