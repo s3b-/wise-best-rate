@@ -22,3 +22,7 @@ EncryptionMode = 2
 
 [api]
 liveUrl = https://api.transferwise.com
+
+[cron]
+frequency = 0
+user = andy
