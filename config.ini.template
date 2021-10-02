@@ -25,4 +25,4 @@ liveUrl = https://api.transferwise.com
 
 [cron]
 frequency = 0
-user = andy
+user = admin
