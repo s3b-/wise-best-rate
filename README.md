@@ -18,6 +18,7 @@ This project is in a very early phase, it will continuously grow during Hacktobe
 
 # Configuration
 - Rename `config.ini.template` to `config.ini`
+- Open `http://localhost:5000` to set config values
   - Profile: Your profile ID, can be found with this [API endpoint](https://api-docs.wise.com/#payouts-guide-get-your-profile-id)
   -  apiKey: Set up [here](https://wise.com/settings/)
   -  targetAccount: ID of the target bank account, can be found e.g. by checking a existing transfer with [this endpoint](https://api-docs.wise.com/#transfers-list)
