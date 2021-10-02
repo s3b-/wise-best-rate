@@ -1,5 +1,9 @@
 # wise-best-rate
-A web application to get the best possible Wise (aka Transferwise) rate
+A web application to get the best possible Wise (aka Transferwise) rate.
+
+If you create a transfer on wise.com, you need to pay it within few hours or days (depending on the day and time). So it makes sense to create the transfer and check later (but before the time exceeds) if the rate increased. If this is the case, obviously the old transfer should be canceled and a new one created.
+
+And this is what this application is doing automatically.
 
 # Contribution
 This project is in a very early phase, it will continuously grow during Hacktoberfest. Feel free to contribute! Please check the open issues to find out more.
