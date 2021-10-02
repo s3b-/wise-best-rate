@@ -23,6 +23,3 @@ This project is in a very early phase, it will continuously grow during Hacktobe
   - Profile: Your profile ID, can be found with this [API endpoint](https://api-docs.wise.com/#payouts-guide-get-your-profile-id)
   -  apiKey: Set up [here](https://wise.com/settings/)
   -  targetAccount: ID of the target bank account, can be found e.g. by checking a existing transfer with [this endpoint](https://api-docs.wise.com/#transfers-list)
-
-# Usage
-The webinterace is currently pretty useless, it will grow n the next days. Currently everything happens by running `apihandler.py` e.g. via cronjob
